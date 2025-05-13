@@ -1,0 +1,4 @@
+scrapy>=2.11.0
+mongoengine>=0.27.0
+python-dotenv>=1.0.0
+dnspython>=2.5.0  # Required for MongoDB Atlas connection
