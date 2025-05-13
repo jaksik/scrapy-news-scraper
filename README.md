@@ -22,6 +22,8 @@ To run the scraper and save results to a JSON file:
 scrapy crawl techcrunch_ai -O techcrunch_ai_results.json
 ```
 
+scrapy crawl techcrunch_ai -o techcrunch_ai_results.json
+
 The scraper will collect article titles and URLs from TechCrunch's AI category and save them to `techcrunch_ai_results.json`.
 
 ## Output Format
