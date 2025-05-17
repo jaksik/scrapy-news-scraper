@@ -28,9 +28,10 @@ class TechcrunchAiSpider(scrapy.Spider):
             if title and url and len(title.strip()) > 0 and url.startswith('http'):
                 yield {
                     'title': title,
-                    'link': url,  # Changed from url to link to match schema
-                    'source': 'TechCrunch',
+                    'link': url,
+                    'source': 'Tech Crunch',
                     'publishedAt': date,
                     'searchTerm': self.search_term,
+                    'category': '',
                     'createdAt': datetime.utcnow().isoformat()
                 }

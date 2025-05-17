@@ -20,21 +20,16 @@ except Exception as e:
     print(f"Error connecting to MongoDB: {str(e)}")
 
 class Article(Document):
-    title = StringField(required=True, index=True)
-    link = StringField(required=True, unique=True)  # Changed from url to link
+    title = StringField(required=True)
+    link = StringField(required=True, unique=True)
     source = StringField(required=True)
-    image = StringField(default=None)
-    publishedAt = DateTimeField(required=True)
-    articleType = StringField(default='news')
-    searchTerm = StringField(required=True)
+    publishedAt = DateTimeField(required=False)
+    searchTerm = StringField(required=False)
     category = StringField(default='')
-    tags = ListField(StringField(), default=list)
-    used = BooleanField(default=False)
-    usedAt = DateTimeField(default=None)
-    createdAt = DateTimeField(default=datetime.utcnow)
-    
+    createdAt = DateTimeField(required=True)
+
     meta = {
-        'collection': 'articles',
+        'collection': 'test_three',
         'indexes': [
             {'fields': ['link'], 'unique': True}
         ]

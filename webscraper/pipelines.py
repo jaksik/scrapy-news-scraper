@@ -36,14 +36,8 @@ class MongoDBPipeline:
                 source=item['source'],
                 publishedAt=datetime.fromisoformat(item['publishedAt']) if item['publishedAt'] else datetime.utcnow(),
                 searchTerm=item['searchTerm'],
+                category=item['category'],
                 createdAt=datetime.fromisoformat(item['createdAt']),
-                # Optional fields with defaults
-                image=None,
-                articleType='news',
-                category='artificial intelligence',
-                tags=[],
-                used=False,
-                usedAt=None
             )
             article.save()
             self.logger.info(f"Saved article: {item['title']}")

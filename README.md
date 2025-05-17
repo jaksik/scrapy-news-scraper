@@ -70,13 +70,17 @@ deactivate
    brew install mongodb-community
    brew services start mongodb-community
    ```
-
-2. Install all dependencies:
+2. Activate venv
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+3. Install all dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Run the spider:
+4. Run the spider:
    ```bash
    scrapy crawl techcrunch_ai
    ```

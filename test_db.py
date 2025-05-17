@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 import os
+import datetime
 from mongoengine import connect, disconnect
 from webscraper.models import Article
 
@@ -23,30 +24,40 @@ def test_mongodb():
         
         # Create test articles with new content
         test_articles = [
-            {
+               {
                 "title": "New AI Language Model Achieves Human-Level Performance in Medical Diagnosis",
-                "url": "https://techcrunch.com/2025/05/13/ai-medical-diagnosis",
+                "link": "https://techcrunch.com/2025/05/13/ai-medical-diagnosis",  # Changed from 'url' to 'link'
                 "source": "TechCrunch",
-                "category": "Artificial Intelligence"
+                "publishedAt": datetime.datetime.utcnow(),
+                "searchTerm": "Startups",
+                "category": "Artificial Intelligence",
+                "createdAt": datetime.datetime.utcnow()
             },
             {
-                "title": "Quantum Computing Startup Announces Breakthrough in Error Correction",
-                "url": "https://techcrunch.com/2025/05/13/quantum-error-correction",
+                "title": "AI-Powered Chatbots Revolutionize Customer Service",
+                "link": "https://techcrunch.com/2025/05/14/ai-chatbots-customer-service",  # Changed from 'url' to 'link'
                 "source": "TechCrunch",
-                "category": "Artificial Intelligence"
+                "publishedAt": datetime.datetime.utcnow(),
+                "searchTerm": "Startups",
+                "category": "Artificial Intelligence",
+                "createdAt": datetime.datetime.utcnow()
             },
             {
-                "title": "AI Ethics Board Proposes New Guidelines for Autonomous Systems",
-                "url": "https://techcrunch.com/2025/05/13/ai-ethics-guidelines",
+                "title": "New AI Model Predicts Stock Market Trends with High Accuracy",
+                "link": "https://techcrunch.com/2025/05/15/ai-stock-market-prediction",  # Changed from 'url' to 'link'
                 "source": "TechCrunch",
-                "category": "Artificial Intelligence"
+                "publishedAt": datetime.datetime.utcnow(),
+                "searchTerm": "Startups",
+                "category": "Artificial Intelligence",
+                "createdAt": datetime.datetime.utcnow()
             }
+            # Add more articles as needed
         ]
         
         # Save articles
         for article_data in test_articles:
             # Check if article already exists
-            existing = Article.objects(url=article_data['url']).first()
+            existing = Article.objects(link=article_data['link']).first()  # Changed from 'url' to 'link'
             if not existing:
                 article = Article(**article_data)
                 article.save()
