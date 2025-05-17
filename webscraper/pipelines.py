@@ -7,6 +7,8 @@ from .models import Article
 class MongoDBPipeline:
     def __init__(self):
         self.logger = logging.getLogger(__name__)
+        self.logger.setLevel(logging.INFO)
+        self.article_count = 0
 
     def open_spider(self, spider):
         # Ensure clean connection state
@@ -25,7 +27,7 @@ class MongoDBPipeline:
 
     def close_spider(self, spider):
         disconnect()
-        self.logger.info("Disconnected from MongoDB")
+        self.logger.info(f"Scraping completed. Total articles saved: {self.article_count}")
 
     def process_item(self, item, spider):
         try:
@@ -34,12 +36,12 @@ class MongoDBPipeline:
                 title=item['title'],
                 link=item['link'],
                 source=item['source'],
-                publishedAt=datetime.fromisoformat(item['publishedAt']) if item['publishedAt'] else datetime.utcnow(),
-                searchTerm=item['searchTerm'],
+                publishedAt=datetime.fromisoformat(item['publishedAt']) if item['publishedAt'] else None,                searchTerm=item['searchTerm'],
                 category=item['category'],
                 createdAt=datetime.fromisoformat(item['createdAt']),
             )
             article.save()
+            self.article_count += 1
             self.logger.info(f"Saved article: {item['title']}")
             return item
         except Exception as e:

@@ -29,7 +29,7 @@ class Article(Document):
     createdAt = DateTimeField(required=True)
 
     meta = {
-        'collection': 'test_three',
+        'collection': 'test_four',
         'indexes': [
             {'fields': ['link'], 'unique': True}
         ]

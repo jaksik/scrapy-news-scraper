@@ -19,7 +19,7 @@ ADDONS = {}
 #USER_AGENT = "webscraper (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+# ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -88,6 +88,13 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = "httpcache"
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
+# Configure logging
+LOG_LEVEL = 'INFO'
+LOG_FORMAT = '%(asctime)s [%(name)s] %(levelname)s: %(message)s'
+LOG_DATEFORMAT = '%Y-%m-%d %H:%M:%S'
 
+# Disable default Scrapy log messages
+LOG_ENABLED = True
+LOG_STDOUT = False
 # Set settings whose default value is deprecated to a future-proof value
 FEED_EXPORT_ENCODING = "utf-8"
