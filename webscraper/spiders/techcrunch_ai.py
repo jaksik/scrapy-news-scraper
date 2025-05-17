@@ -7,7 +7,7 @@ class TechcrunchAiSpider(scrapy.Spider):
     start_urls = ["https://techcrunch.com/category/artificial-intelligence/"]
     
     # Define search term as class variable
-    search_term = "artificial intelligence"
+    search_term = "tech crunch ai"
 
     def parse(self, response):
         # Find all article titles by looking for links within H3 elements
